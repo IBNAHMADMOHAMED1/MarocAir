@@ -1,2 +1,4 @@
-package com.marocair.controller;public class FlightControler {
+package com.marocair.controller;
+
+public class FlightControler {
 }
