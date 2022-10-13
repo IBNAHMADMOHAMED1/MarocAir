@@ -20,4 +20,13 @@ public class Model extends DBConnection {
         return getStatement().executeQuery(sql);
     }
 
+    public ResultSet query(String sql) throws SQLException {
+        return getStatement().executeQuery(sql);
+    }
+
+    // method to insert data into the database
+    public Boolean insert(String sql) throws SQLException {
+        return getStatement().execute(sql);
+    }
+
 }

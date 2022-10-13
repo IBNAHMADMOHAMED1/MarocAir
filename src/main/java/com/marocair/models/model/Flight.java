@@ -7,29 +7,45 @@ import java.util.List;
 
 public class Flight extends Model {
 
-    private static ArrayList<TableFlight> flights = new ArrayList<TableFlight>();
+    // we have tableFlight object to store the data of the flights
+    private TableFlight tableFlight;
+
 
     public Flight() {
         super();
         setTableName("Flight");
     }
-    // get all flights
-    public List<TableFlight> getAllFlights() throws SQLException {
-        ResultSet rs = getAll();
+    // get all flights from the database
+    //String sql = "SELECT f.flight_id, f.flight_number, f.departure_airport_id, f.arrival_airport_id, f.departure_time, f.arrival_time, f.flight_max_capacity, a.airline_name, d.airport_name as departure_airport_name, a2.airport_name as arrival_airport_name FROM Flight f JOIN Airport d ON f.departure_airport_id = d.airport_id JOIN Airport a2 ON f.arrival_airport_id = a2.airport_id JOIN Airline a ON f.airline_id = a.airline_id";
+   // ResultSet rs = query(sql);
+    public List<TableFlight> getAllFlight() throws SQLException {
+        List<TableFlight> flights = new ArrayList<TableFlight>();
+        String sql = "SELECT f.flight_id, f.flight_number, f.departure_airport_id, f.arrival_airport_id, f.departure_time, f.arrival_time, f.flight_max_capacity, a.airline_name, d.airport_name as departure_airport_name, a2.airport_name as arrival_airport_name FROM Flight f JOIN Airport d ON f.departure_airport_id = d.airport_id JOIN Airport a2 ON f.arrival_airport_id = a2.airport_id JOIN Airline a ON f.airline_id = a.airline_id";
+        ResultSet rs = query(sql);
         while (rs.next()) {
-            System.out.println("_____________________________________________________");
             TableFlight flight = new TableFlight();
             flight.setFlight_id(rs.getInt("flight_id"));
+            flight.setFlight_number(rs.getString("flight_number"));
             flight.setDeparture_airport_id(rs.getInt("departure_airport_id"));
-            flight.setArrival_airport_id(rs.getInt("arrival_airport_id"));
-            flight.setFight_number(rs.getInt("fight_number"));
+            flight.setDeparture_time(rs.getString("departure_time"));
+            flight.setArrival_time(rs.getString("arrival_time"));
             flight.setFlight_max_capacity(rs.getInt("flight_max_capacity"));
-            flight.setDeparture_time(rs.getDate("departure_time"));
-            flight.setArrival_time(rs.getDate("arrival_time"));
+            flight.setAirline_name(rs.getString("airline_name"));
+            flight.setDeparture_airport_name(rs.getString("departure_airport_name"));
+            flight.setArrival_airport_name(rs.getString("arrival_airport_name"));
             flights.add(flight);
         }
         return flights;
     }
+
+    // create a new flight using method insert in the Model class
+    public boolean createFlight(TableFlight data) throws SQLException {
+        String sql = "INSERT INTO Flight (flight_number, departure_airport_id, arrival_airport_id, departure_time, arrival_time, flight_max_capacity) ";
+        return insert(sql);
+    }
+
+
+
 
 }
 
