@@ -1,4 +1,4 @@
-package com.marocair.controler;
+package com.marocair.controller;
 
 
 import java.io.*;
