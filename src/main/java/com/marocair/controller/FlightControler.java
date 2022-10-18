@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import com.marocair.models.model.Flight;
 import com.marocair.models.table.TableFlight;
 import jakarta.servlet.http.*;
@@ -20,12 +21,18 @@ public class FlightControler extends HttpServlet {
     private static List<TableFlight> flights = new ArrayList<TableFlight>();
 
 
-    public void init()  {
-        message = "Hello World!";
-    }
-    public void doGet (HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
+    public void init() {
 
+    }
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        System.out.println("doGet");
+        flights = getFlights();
+        if (flights.isEmpty())
+            System.out.println("flights is empty");
+        flights.forEach(flight -> System.out.println(flight.getFlight_number()));
+
+        response.setContentType("text/html");
         // Hello
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
@@ -42,7 +49,12 @@ public class FlightControler extends HttpServlet {
         out.println("<th>airline_name</th>");
         out.println("<th>departure_airport_name</th>");
         out.println("<th>arrival_airport_name</th>");
+        out.println("<th>departure_airport_name</th>");
+        out.println("<th>arrival_airport_name</th>");
+        out.println("</th> Delete</th>");
+        out.println("</th> Update</th>");
         out.println("</tr>");
+
         for (TableFlight flight : flights) {
             out.println("<tr>");
             out.println("<td>" + flight.getFlight_id() + "</td>");
@@ -51,15 +63,28 @@ public class FlightControler extends HttpServlet {
             out.println("<td>" + flight.getFlight_number() + "</td>");
             out.println("<td>" + flight.getFlight_max_capacity() + "</td>");
             out.println("<td>" + flight.getDeparture_time() + "</td>");
-            out.println("<td>" +  flight.getArrival_time()  + "</td>");
+            out.println("<td>" + flight.getArrival_time() + "</td>");
             out.println("<td>" + flight.getAirline_name() + "</td>");
             out.println("<td>" + flight.getDeparture_airport_name() + "</td>");
             out.println("<td>" + flight.getArrival_airport_name() + "</td>");
+            out.println("<td>" + flight.getHeure_depart() + "</td>");
+            out.println("<td>" + flight.getHeure_arrivee() + "</td>");
+            out.println("<td><a href=\"http://localhost:8080/flight-servlet?flight_id=" + flight.getFlight_id() + "\">Delete</a></td>");
+            out.println("</td> <a href=\"http://localhost:8080/update-flight.jsp?flight_id=" + flight.getFlight_id() + "\">Update</a></td>");
             out.println("</tr>");
         }
         out.println("</table>");
         out.println("</body></html>");
     }
 
-
+    // getFlights method
+    public List<TableFlight> getFlights() {
+        List<TableFlight> flights = new ArrayList<TableFlight>();
+        try {
+            flights = flight.getAllFlight();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return flights;
+    }
 }
