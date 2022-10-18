@@ -38,7 +38,7 @@ public class FlightControler extends HttpServlet {
         out.println("<th>fight_number</th>");
         out.println("<th>flight_max_capacity</th>");
         out.println("<th>departure_time</th>");
-        out.println("<th>arrival_time</th>");
+         out.println("<th>arrival_time</th>");
         out.println("<th>airline_name</th>");
         out.println("<th>departure_airport_name</th>");
         out.println("<th>arrival_airport_name</th>");
