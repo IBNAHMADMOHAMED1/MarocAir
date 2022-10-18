@@ -15,37 +15,10 @@
 </head>
 <body>
 
-<%--<nav-component></nav-component>--%>
 <div class="w-full min-h-screen bg-gray-400">
 
 
-    <div class="w-full h-[70px] bg-white flex justify-around">
-        <div class="bg-blue-400">
-            <h1>Logo</h1>
-        </div>
-        <div class="w-3/4 h-full flex justify-around items-center">
-            <div class="w-1/2">
-                <ul class="flex justify-evenly items-center  w-full h-full">
-                    <li>
-                        <a href="" style="font-family: 'Poppins', sans-serif">HOME</a>
-                    </li>
-                    <li>
-                        <a href="" style="font-family: 'Poppins', sans-serif">Your Cart</a>
-                    </li>
-                    <li>
-                        <a href="" style="font-family: 'Poppins', sans-serif">Favourites</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="w-1/4 flex justify-end items-end">
-                <div class="w-1/2 flex items-center justify-around">
-                    <a href="#" style="font-family: 'Poppins', sans-serif">Login</a>
-
-                    <a href="#" style="font-family: 'Poppins', sans-serif">Sign up</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <nav-component></nav-component>
 
     <div class="w-full relative bg-gray-100 h-[680px] flex">
         <div class="w-1/2 bg-[#D2ECF6] flex flex-col items-center justify-center">
@@ -197,7 +170,75 @@
 
 </div>
 
+<script type="text/javascript">
+    let numberOfAdults = 1;
+    let numberOfStudent = 0;
+    let total = 1;
+    let number = 0;
+    let adultNums =
+
+
+        window.onload = () => {
+            document.getElementById("adultNumber").textContent = numberOfAdults;
+            document.getElementById("addingBar").style.display = "none";
+        }
+
+    const addNumber = (number, element) => {
+        if (total <= 1) {
+            total = 1;
+        } else {
+            element.textContent = number;
+            document.getElementById("totalPassengers").textContent = total;
+
+        }
+
+        console.log(total);
+    }
+
+    const subsTrack = (person, currentElement) => {
+
+        if (total === 1) total = 1;
+        switch (person) {
+            case "Adults" :
+                numberOfAdults -= 1;
+                if (numberOfAdults <= 1) numberOfAdults = 1;
+                total -= 1;
+                addNumber(numberOfAdults, currentElement)
+                break;
+            case "Students" :
+                numberOfStudent -= 1;
+                total -= 1;
+                if (numberOfStudent < 0) numberOfStudent = 0;
+                addNumber(numberOfStudent, currentElement)
+                break;
+        }
+
+
+    }
+    const addtional = (person, currentElement) => {
+        switch (person) {
+            case "Adults" :
+                numberOfAdults += 1;
+                total += 1;
+                addNumber(numberOfAdults, currentElement)
+                break;
+            case "Students" :
+                numberOfStudent += 1;
+                total += 1;
+                addNumber(numberOfStudent, currentElement)
+                break;
+        }
+
+    }
+
+    document.getElementById("open").onclick = () => {
+        document.getElementById("addingBar").style.display = "block";
+    }
+    document.getElementById("backgroundOverlay").onclick = () => {
+        document.getElementById("addingBar").style.display = "none";
+    }
+
+</script>
 
 </body>
-<script src="js/Style.js"></script>
 </html>

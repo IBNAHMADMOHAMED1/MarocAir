@@ -14,6 +14,7 @@ public class DbConnection {
     // method returns a connection to the database
     public static Connection GetConnection()  {
         Connection connection = null;
+            System.out.println("connected");
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
