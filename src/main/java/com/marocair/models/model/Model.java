@@ -8,7 +8,7 @@ public class Model extends DbConnection {
         Model.tableName = tableName;
     }
 
-    private static String tableName;
+    private static String tableName="Flight";
 
 
     public ResultSet getAll() throws SQLException {
@@ -21,7 +21,7 @@ public class Model extends DbConnection {
     }
 
     public ResultSet query(String sql) throws SQLException {
-        return getStatement().executeQuery(sql);
+       return getStatement().executeQuery(sql);
     }
 
     // method to insert data into the database

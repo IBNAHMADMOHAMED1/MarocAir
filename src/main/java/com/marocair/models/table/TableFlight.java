@@ -19,6 +19,33 @@ public class TableFlight {
     private String departure_time;
     private String arrival_time;
     private int flight_max_capacity;
+
+    public int getPrice_id() {
+        return price_id;
+    }
+
+    public void setPrice_id(int price_id) {
+        this.price_id = price_id;
+    }
+
+    public String getHeure_depart() {
+        return heure_depart;
+    }
+
+    public void setHeure_depart(String heure_depart) {
+        this.heure_depart = heure_depart;
+    }
+
+    public String getHeure_arrivee() {
+        return heure_arrivee;
+    }
+
+    public void setHeure_arrivee(String heure_arrivee) {
+        this.heure_arrivee = heure_arrivee;
+    }
+
+    private String heure_depart;
+    private String heure_arrivee;
     public String getAirline_name() {
         return airline_name;
     }
@@ -115,7 +142,6 @@ public class TableFlight {
         System.out.println(date);
         String[] dateArray = date.split(" ");
         String[] dateArray2 = dateArray[0].split("-");
-        String[] dateArray3 = dateArray[1].split(":");
         String monthName = "";
         switch (dateArray2[1])
         {
@@ -159,7 +185,7 @@ public class TableFlight {
                 monthName = "Error";
                 break;
         }
-        return dateArray2[2] + " " + monthName + " " + dateArray2[0] + " à " + dateArray3[0] + ":" + dateArray3[1];
+        return dateArray2[2] + " " + monthName + " " + dateArray2[0];
 
     }
 
