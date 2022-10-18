@@ -1,5 +1,7 @@
 package com.marocair.models.table;
 
+
+
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -83,7 +85,7 @@ public class TableFlight {
     }
 
     public String getDeparture_time() {
-        return departure_time;
+        return dateFormat(departure_time);
     }
 
     public void setDeparture_time(String departure_time) {
@@ -91,7 +93,7 @@ public class TableFlight {
     }
 
     public String getArrival_time() {
-        return arrival_time;
+        return dateFormat(arrival_time);
     }
 
     public void setArrival_time(String arrival_time) {
@@ -107,6 +109,59 @@ public class TableFlight {
     }
 
     // INSERT INTO Flight(flight_id,airline_id, flight_number, departure_airport_id, arrival_airport_id, departure_time, arrival_time, flight_max_capacity, flight_price_id) VALUES (1,1,'AF 001',1,2,'2019-01-01 00:00:00','2019-01-01 00:00:00',100,1);
+
+    public String dateFormat(String date)
+    {
+        System.out.println(date);
+        String[] dateArray = date.split(" ");
+        String[] dateArray2 = dateArray[0].split("-");
+        String[] dateArray3 = dateArray[1].split(":");
+        String monthName = "";
+        switch (dateArray2[1])
+        {
+            case "01":
+                monthName = "Janvier";
+                break;
+            case "02":
+                monthName = "Février";
+                break;
+            case "03":
+                monthName = "Mars";
+                break;
+            case "04":
+                monthName = "Avril";
+                break;
+            case "05":
+                monthName = "Mai";
+                break;
+            case "06":
+                monthName = "Juin";
+                break;
+            case "07":
+                monthName = "Juillet";
+                break;
+            case "08":
+                monthName = "Août";
+                break;
+            case "09":
+                monthName = "Septembre";
+                break;
+            case "10":
+                monthName = "Octobre";
+                break;
+            case "11":
+                monthName = "Novembre";
+                break;
+            case "12":
+                monthName = "Décembre";
+                break;
+            default:
+                monthName = "Error";
+                break;
+        }
+        return dateArray2[2] + " " + monthName + " " + dateArray2[0] + " à " + dateArray3[0] + ":" + dateArray3[1];
+
+    }
 
 
 }

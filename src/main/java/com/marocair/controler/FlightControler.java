@@ -13,7 +13,7 @@ import jakarta.servlet.annotation.*;
 @WebServlet(name = "flightServlet", value = "/flight-servlet")
 public class FlightControler extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private static ArrayList<TableFlight> message;
+    private static String message;
     private static Flight flight = new Flight();
 
     private static TableFlight tableFlight = new TableFlight();
@@ -21,15 +21,8 @@ public class FlightControler extends HttpServlet {
 
 
     public void init()  {
-        try {
-            flights = flight.getAllFlight();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        message = "Hello World!";
     }
-
-
-
     public void doGet (HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
 
@@ -58,19 +51,26 @@ public class FlightControler extends HttpServlet {
             out.println("<td>" + flight.getFlight_number() + "</td>");
             out.println("<td>" + flight.getFlight_max_capacity() + "</td>");
             out.println("<td>" + flight.getDeparture_time() + "</td>");
-            out.println("<td>" + flight.getArrival_time() + "</td>");
+            out.println("<td>" +  flight.getArrival_time()  + "</td>");
             out.println("<td>" + flight.getAirline_name() + "</td>");
             out.println("<td>" + flight.getDeparture_airport_name() + "</td>");
             out.println("<td>" + flight.getArrival_airport_name() + "</td>");
             out.println("</tr>");
         }
-
-
-
         out.println("</table>");
         out.println("</body></html>");
-
-
     }
+
+    // post method
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("text/html");
+
+        // j
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>");
+        out.println("<h1>" + message + "</h1>");
+        out.println("</body></html>");
+    }
+
 
 }
