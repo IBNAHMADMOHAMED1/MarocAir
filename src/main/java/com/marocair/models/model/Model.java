@@ -1,9 +1,9 @@
 package com.marocair.models.model;
-
+import com.marocair.models.dao.DbConnection;
 import java.sql.*;
-import com.marocair.models.dao.DBConnection;
 
-public class Model extends DBConnection {
+
+public class Model extends DbConnection {
     public static void setTableName(String tableName) {
         Model.tableName = tableName;
     }

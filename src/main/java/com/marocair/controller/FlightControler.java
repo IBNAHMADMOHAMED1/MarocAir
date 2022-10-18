@@ -44,6 +44,7 @@ public class FlightControler extends HttpServlet {
         out.println("<th>arrival_airport_name</th>");
         out.println("</tr>");
         for (TableFlight flight : flights) {
+            System.out.println(flight.getAirline_name());
             out.println("<tr>");
             out.println("<td>" + flight.getFlight_id() + "</td>");
             out.println("<td>" + flight.getDeparture_airport_id() + "</td>");
@@ -62,15 +63,7 @@ public class FlightControler extends HttpServlet {
     }
 
     // post method
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
 
-        // j
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
-        out.println("</body></html>");
-    }
 
 
 }
