@@ -60,6 +60,7 @@ public class TableFlight {
     }
 
     public void setFlight_id(int flight_id) {
+        System.out.println(flight_id + "helloo");
         this.flight_id = flight_id;
     }
 

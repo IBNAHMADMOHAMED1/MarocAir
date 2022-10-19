@@ -26,7 +26,6 @@ public class FlightControler extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        System.out.println("doGet");
         flights = getFlights();
         if (flights.isEmpty())
             System.out.println("flights is empty");
@@ -56,6 +55,7 @@ public class FlightControler extends HttpServlet {
         out.println("</tr>");
 
         for (TableFlight flight : flights) {
+            System.out.println(flight.getFlight_id());
             out.println("<tr>");
             out.println("<td>" + flight.getFlight_id() + "</td>");
             out.println("<td>" + flight.getDeparture_airport_id() + "</td>");
