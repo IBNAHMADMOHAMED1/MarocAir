@@ -15,6 +15,8 @@ public class Flight extends Model {
         String sql = "SELECT f.flight_id, f.flight_number, f.departure_airport_id, f.arrival_airport_id, f.departure_time,f.departure_hour ,f.arrival_time, f.arrival_hour, f.flight_max_capacity, a.airline_name, d.airport_name as departure_airport_name, a2.airport_name as arrival_airport_name FROM Flight f JOIN Airport d ON f.departure_airport_id = d.airport_id JOIN Airport a2 ON f.arrival_airport_id = a2.airport_id JOIN Airline a ON f.airline_id = a.airline_id";
         ResultSet rs;
         rs = query(sql);
+
+
         if (rs == null) {
             System.out.println("rs null");
         }

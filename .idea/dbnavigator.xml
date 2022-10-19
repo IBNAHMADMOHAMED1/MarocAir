@@ -32,7 +32,7 @@
       <console name="msql" type="STANDARD" schema="" session="Main" />
     </connection>
     <connection id="87a83d6b-ae1f-44e3-ac61-e482db4885ba">
-      <console name="Connection" type="STANDARD" schema="marocair" session="Main" />
+      <console name="Connection" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
