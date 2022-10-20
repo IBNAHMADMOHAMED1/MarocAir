@@ -6,7 +6,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/8464c41458.js" crossorigin="anonymous"></script>
 
-    <script src="Components/Navbar.js" type="module"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -18,7 +18,33 @@
 <div class="w-full min-h-screen bg-gray-400">
 
 
-    <nav-component></nav-component>
+    <div class="w-full h-[70px] bg-white flex justify-around  z-10">
+        <div class="bg-blue-400">
+            <h1>Logo</h1>
+        </div>
+        <div class="w-3/4 h-full flex justify-around items-center">
+            <div class="w-1/2">
+                <ul class="flex justify-evenly items-center  w-full h-full">
+                    <li>
+                        <a href="" style="font-family: 'Poppins', sans-serif">HOME</a>
+                    </li>
+                    <li>
+                        <a href="" style="font-family: 'Poppins', sans-serif">Your Cart</a>
+                    </li>
+                    <li>
+                        <a href="" style="font-family: 'Poppins', sans-serif">Favourites</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="w-1/4 flex justify-end items-end">
+                <div class="w-1/2 flex items-center justify-around">
+                    <a href="admin/Auth.jsp" style="font-family: 'Poppins', sans-serif">Login</a>
+
+                    <a href="#" style="font-family: 'Poppins', sans-serif">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="w-full relative bg-gray-100 h-[680px] flex">
         <div class="w-1/2 bg-[#D2ECF6] flex flex-col items-center justify-center">
@@ -69,7 +95,7 @@
                                     </div>
                                 </div>
 
-                                <div class="w-[300px] z-10 shadow-lg bg-white space-y-5 px-4 py-6 absolute top-0 -left-4 rounded-lg "
+                                <div class="w-[300px] z-50 shadow-lg bg-white space-y-5 px-4 py-6 absolute top-0 -left-4 rounded-lg "
                                      id="addingBar">
                                     <div class="flex justify-between">
                                         <div class="flex justify-center space-x-1 items-center">
@@ -133,33 +159,49 @@
                     </div>
                 </div>
 
-                <div class="w-full h-fit flex justify-center items-center">
-                    <div class="w-11/12 mt-10 rounded flex bg-gray-400 h-20 px-4">
-                        <div class="flex w-2/3 justify-around  h-full items-center">
-                            <div class="w-1/2 h-full flex items-center  justify-center border-r-[1px] border-white">
-                                <%--                            <div class=" w-1/2 flex items-center justify-center h-3/4 rounded bg-white">--%>
-                                <%--                                <h1>Thakurgaon</h1>--%>
-                                <%--                            </div>--%>
-                                <input class=" z-10 w-3/4 h-3/4 bg-white rounded pl-4 outline-none ring-2 focus:ring-blue-700 focus:ring-offset-4"
-                                       placeholder="depart" style="font-family: 'Poppins', sans-serif">
+                <div class="w-full h-fit flex -z-10 justify-center items-center">
+                    <form class="w-full flex space-x-2 z-10" action=""
+                          method="get">
+                        <div class="w-11/12 mt-10 rounded flex bg-gray-400 h-20 px-4">
+                            <div class="flex w-2/3 justify-around  h-full items-center">
+                                <%--                                <div class="w-1/2 h-full flex items-center  justify-center border-r-[1px] border-white">--%>
+                                <%--                                  --%>
+                                <%--                                    <input class=" z-10 w-3/4 h-3/4 bg-white rounded pl-4 outline-none ring-2 focus:ring-blue-700 focus:ring-offset-4"--%>
+                                <%--                                           placeholder="depart" style="font-family: 'Poppins', sans-serif" name="depart">--%>
+                                <%--                                </div>--%>
+                                <%--                                <div class="w-1/2 h-full flex items-center justify-center border-l-[1px] border-white">--%>
+                                <%--                                    <input class=" z-10 w-3/4 h-3/4 bg-white rounded pl-4 outline-none ring-2 focus:ring-blue-700 focus:ring-offset-4"--%>
+                                <%--                                           placeholder="return" style="font-family: 'Poppins', sans-serif" name="arrival">--%>
+                                <%--                                </div>--%>
+
+                                <select>
+                                    <c:forEach var="items" items="${airports}">
+                                        <option>
+                                            {items}
+                                        </option>
+                                    </c:forEach>
+                                </select>
                             </div>
-                            <div class="w-1/2 h-full flex items-center justify-center border-l-[1px] border-white">
-                                <input class=" z-10 w-3/4 h-3/4 bg-white rounded pl-4 outline-none ring-2 focus:ring-blue-700 focus:ring-offset-4"
-                                       placeholder="return" style="font-family: 'Poppins', sans-serif">
+                            <div class="w-1/3 flex justify-center items-center space-x-2 pl-4 h-full">
+                                <div class="z-10 w-1/2 flex justify-center items-center h-full rounded">
+                                    <input type="date" class="bg-white w-full h-3/4 rounded pl-3 outline-none"
+                                           name="departDate">
+                                </div>
+                                <div class="z-10 flex justify-center items-center w-1/2 h-full rounded">
+                                    <input type="date" class="bg-white w-full h-3/4 rounded pl-3 outline-none"
+                                           name="arrivalDate">
+                                </div>
                             </div>
                         </div>
-                        <div class="w-1/3 flex justify-center items-center space-x-2 pl-4 h-full">
-                            <div class="z-10 w-1/2 flex justify-center items-center h-full rounded">
-                                <input type="date" class="bg-white w-full h-3/4 rounded pl-3 outline-none">
-                            </div>
-                            <div class="z-10 flex justify-center items-center w-1/2 h-full rounded">
-                                <input type="date" class="bg-white w-full h-3/4 rounded pl-3 outline-none">
-                            </div>
+                        <div class="w-24 h-20 mt-10">
+                            <button type="submit"
+                                    class="text-white bg-black w-full h-full focus:bg-black/75 cursor-pointer rounded-md"
+                                    style="font-family: 'Poppins', sans-serif">
+                                search
+                            </button>
                         </div>
-                    </div>
-                    <div class="bg-black w-24 h-20 mt-10 flex cursor-poin                                                                                                                                                                                                                                                               ter justify-center rounded-md items-center ml-6">
-                        <i class="fa-solid fa-magnifying-glass text-white text-lg "></i>
-                    </div>
+
+                    </form>
                 </div>
 
 
@@ -169,7 +211,7 @@
 
 
 </div>
-
+<script type="text/html" src="Components/Navbar.js"></script>
 <script type="text/javascript">
     let numberOfAdults = 1;
     let numberOfStudent = 0;
@@ -186,11 +228,10 @@
     const addNumber = (number, element) => {
         if (total <= 1) {
             total = 1;
-        } else {
-            element.textContent = number;
-            document.getElementById("totalPassengers").textContent = total;
-
         }
+
+        element.textContent = number;
+        document.getElementById("totalPassengers").textContent = total;
 
         console.log(total);
     }
