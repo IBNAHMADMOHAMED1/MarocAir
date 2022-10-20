@@ -11,7 +11,7 @@ public class Model extends DbConnection {
         Model.tableName = tableName;
     }
 
-    private static String tableName="Flight";
+    private static String tableName="flight";
 
 
 

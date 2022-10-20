@@ -4,11 +4,10 @@ import java.util.Properties;
 
 public class DbConnection {
     // database connection
-    private static final String DB_NAME = "newAir";
+    private static final String DB_NAME = "marocair";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "123456";
-
-    private static final String URL = "jdbc:mysql://localhost:3306/newAir";
+    private static final String PASSWORD = "";
+    private static final String URL = "jdbc:mysql://localhost:3306/marocair";
 
 
     // method returns a connection to the database
@@ -16,7 +15,9 @@ public class DbConnection {
         Connection connection = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
+            System.out.println("connecting...");
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            System.out.println("connected successfully");
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
