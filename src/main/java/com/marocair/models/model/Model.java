@@ -1,6 +1,9 @@
 package com.marocair.models.model;
 import com.marocair.models.dao.DbConnection;
+import com.marocair.models.table.TableAirport;
+
 import java.sql.*;
+import java.util.List;
 
 
 public class Model extends DbConnection {
@@ -11,10 +14,7 @@ public class Model extends DbConnection {
     private static String tableName="Flight";
 
 
-    public ResultSet getAll() throws SQLException {
-        String sql = "SELECT * FROM " + tableName;
-        return getStatement().executeQuery(sql);
-    }
+
     public ResultSet get(String column, String value) throws SQLException {
         String sql = "SELECT * FROM " + tableName + " WHERE " + column + " = '" + value + "'";
         return getStatement().executeQuery(sql);
@@ -28,5 +28,9 @@ public class Model extends DbConnection {
     public Boolean insert(String sql) throws SQLException {
         return getStatement().execute(sql);
     }
+    public  Boolean delete(String sql) throws SQLException {
+        return getStatement().execute(sql);
+    }
+
 
 }

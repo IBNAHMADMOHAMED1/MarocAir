@@ -20,6 +20,16 @@ public class TableFlight {
     private String arrival_time;
     private int flight_max_capacity;
 
+    public Double getPrice_value() {
+        return price_value;
+    }
+
+    public void setPrice_value(Double price_value) {
+        this.price_value = price_value;
+    }
+
+    private Double price_value;
+
     public int getPrice_id() {
         return price_id;
     }
@@ -112,7 +122,7 @@ public class TableFlight {
     }
 
     public String getDeparture_time() {
-        return dateFormat(departure_time);
+        return departure_time;
     }
 
     public void setDeparture_time(String departure_time) {
@@ -120,7 +130,7 @@ public class TableFlight {
     }
 
     public String getArrival_time() {
-        return dateFormat(arrival_time);
+        return arrival_time;
     }
 
     public void setArrival_time(String arrival_time) {
