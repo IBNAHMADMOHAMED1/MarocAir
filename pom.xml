@@ -34,6 +34,14 @@
             <artifactId>jersey-media-json-jackson</artifactId>
             <version>3.0.4</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.glassfish.jersey.inject</groupId>
             <artifactId>jersey-cdi2-se</artifactId>
@@ -67,6 +75,14 @@
             <artifactId>argon2-jvm</artifactId>
             <version>2.11</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+
+
 
     </dependencies>
 

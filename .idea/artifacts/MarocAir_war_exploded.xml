@@ -32,9 +32,11 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.module:jackson-module-jakarta-xmlbind-annotations:2.13.0" />
           <element id="library" level="project" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:3.0.1" />
           <element id="library" level="project" name="Maven: com.sun.activation:jakarta.activation:2.0.1" />
+          <element id="library" level="project" name="Maven: org.glassfish.web:jakarta.servlet.jsp.jstl:2.0.0" />
+          <element id="library" level="project" name="Maven: jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:2.0.0" />
+          <element id="library" level="project" name="Maven: jakarta.el:jakarta.el-api:4.0.0" />
           <element id="library" level="project" name="Maven: org.glassfish.jersey.inject:jersey-cdi2-se:3.0.4" />
           <element id="library" level="project" name="Maven: jakarta.enterprise:jakarta.enterprise.cdi-api:3.0.0" />
-          <element id="library" level="project" name="Maven: jakarta.el:jakarta.el-api:4.0.0" />
           <element id="library" level="project" name="Maven: jakarta.interceptor:jakarta.interceptor-api:2.0.0" />
           <element id="library" level="project" name="Maven: org.jboss.weld.se:weld-se-core:4.0.3.Final" />
           <element id="library" level="project" name="Maven: org.jboss.weld.environment:weld-environment-common:4.0.3.Final" />
@@ -49,6 +51,8 @@
           <element id="library" level="project" name="Maven: de.mkammerer:argon2-jvm:2.11" />
           <element id="library" level="project" name="Maven: de.mkammerer:argon2-jvm-nolibs:2.11" />
           <element id="library" level="project" name="Maven: net.java.dev.jna:jna:5.8.0" />
+          <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.6.2" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">
