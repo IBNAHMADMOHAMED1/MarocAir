@@ -1,3 +1,6 @@
+<%@ page import="com.marocair.models.table.TableAirport" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.marocair.controller.AirportController" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -14,7 +17,10 @@
           rel="stylesheet">
 </head>
 <body>
+<% List<TableAirport> airports = AirportController.getAllAirports();
 
+
+%>
 <div class="w-full min-h-screen bg-gray-400">
 
 
@@ -67,129 +73,140 @@
 
 
         <div class="w-full h-fit justify-center items-center absolute -bottom-28">
-            <div class="w-3/4 h-56 bg-white shadow-xl mx-auto rounded-md p-4">
-                <div id="backgroundOverlay" class="fixed inset-0 bg-transparent"></div>
-                <div class="flex items-center justify-around w-full ">
-                    <div class="w-full h-fit flex justify-between">
+            <form class="w-full z-50" action="${pageContext.request.contextPath}/FlightSearch" method="post">
+                <div class="w-3/4 h-56 bg-white shadow-xl mx-auto rounded-md p-4">
+                    <div id="backgroundOverlay" class="-z-10 fixed inset-0 bg-transparent"></div>
+                    <div class="flex items-center justify-around w-full ">
+                        <div class="w-full h-fit flex justify-between">
 
-                        <div class="w-2/3 flex space-x-6">
-                            <div class="flex w-fit justify-center relative items-center">
-                                <i class="fa-solid fa-plane absolute left-0"></i>
-                                <select class="px-8 py-2 border-none outline-none">
-                                    <option value="Round-trip">Round-trip</option>
-                                    <option value="one-way">one-way</option>
-                                </select>
-                            </div>
-                            <div class="flex w-40 justify-center relative items-center">
-                                <div class="flex justify-between space-x-3 items-center">
-                                    <i class="fa-solid fa-user"></i>
+                            <div class="w-2/3 flex space-x-6">
+                                <div class="flex w-fit justify-center relative items-center">
+                                    <i class="fa-solid fa-plane absolute left-0"></i>
+                                    <select class="px-8 py-2 border-none outline-none">
+                                        <option value="Round-trip">Round-trip</option>
+                                        <option value="one-way">one-way</option>
+                                    </select>
+                                </div>
+                                <div class="flex w-40 justify-center relative items-center">
+                                    <div class="flex justify-between space-x-3 items-center">
+                                        <i class="fa-solid fa-user"></i>
 
-                                    <div class="w-2/3 flex h-fit py-2 items-center justify-center relative">
-                                        <div class="flex items-center space-x-2">
-                                            <h1 id="totalPassengers">1</h1>
-                                            <p class="">passengers</p>
+                                        <div class="w-2/3 flex h-fit py-2 items-center justify-center relative">
+                                            <div class="flex items-center space-x-2">
+                                                <h1 id="totalPassengers">1</h1>
+                                                <p class="">passengers</p>
+                                            </div>
+                                        </div>
+                                        <div id="open">
+                                            <i class="fa-solid fa-chevron-down cursor-pointer"></i>
                                         </div>
                                     </div>
-                                    <div id="open">
-                                        <i class="fa-solid fa-chevron-down cursor-pointer"></i>
+
+                                    <div class="w-[300px] z-50 shadow-lg bg-white space-y-5 px-4 py-6 absolute top-0 -left-4 rounded-lg "
+                                         id="addingBar">
+                                        <div class="flex justify-between">
+                                            <div class="flex justify-center space-x-1 items-center">
+                                                <h1 class="" style="font-family: 'Poppins', sans-serif">Adults</h1>
+                                                <p class="text-sm text-gray-400"
+                                                   style="font-family: 'Poppins', sans-serif">
+                                                    18 ans et +</p>
+                                            </div>
+
+                                            <div class="flex justify-center space-x-3">
+                                                <div class="w-5 h-5 cursor-pointer rounded border-[1px] border-gray-300 flex items-center justify-center"
+                                                     onclick="subsTrack('Adults',document.getElementById('adultNumber'))">
+                                                    <h1 class="text-[#008b8b]">-</h1>
+                                                </div>
+                                                <h1 id="adultNumber">1</h1>
+                                                <div class="w-5 h-5 cursor-pointer rounded border-[1px] border-gray-300 flex items-center justify-center"
+                                                     onclick="addtional('Adults',document.getElementById('adultNumber'))">
+                                                    <h1 class="text-[#008b8b]">+</h1>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <div class="flex justify-center space-x-1 items-center">
+                                                <h1 class="" style="font-family: 'Poppins', sans-serif">Etudiants</h1>
+                                                <p class="text-sm text-gray-400"
+                                                   style="font-family: 'Poppins', sans-serif">
+                                                    > 18 </p>
+                                            </div>
+
+                                            <div class="flex justify-center space-x-3">
+                                                <div class="w-5 h-5 cursor-pointer rounded border-[1px] border-gray-300 flex items-center justify-center"
+                                                     onclick="subsTrack('Students',document.getElementById('studentNumber'))">
+                                                    <h1 class="text-[#008b8b]">-</h1>
+                                                </div>
+                                                <h1 id="studentNumber">0</h1>
+                                                <div class="w-5 h-5 cursor-pointer rounded border-[1px] border-gray-300 flex items-center justify-center"
+                                                     onclick="addtional('Students',document.getElementById('studentNumber'))">
+                                                    <h1 class="text-[#008b8b]">+</h1>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="flex relative px-2 justify-between space-x-2 items-center">
+                                    <i class="fa-solid fa-tag"></i>
+                                    <select class="px-5 py-2 border-none outline-none" name="travelClass">
+                                        <option value="Business-class">Business-class</option>
+                                        <option value="First-class">First-class</option>
+                                        <option value="Economy">Economy</option>
+                                    </select>
 
-                                <div class="w-[300px] z-50 shadow-lg bg-white space-y-5 px-4 py-6 absolute top-0 -left-4 rounded-lg "
-                                     id="addingBar">
-                                    <div class="flex justify-between">
-                                        <div class="flex justify-center space-x-1 items-center">
-                                            <h1 class="" style="font-family: 'Poppins', sans-serif">Adults</h1>
-                                            <p class="text-sm text-gray-400" style="font-family: 'Poppins', sans-serif">
-                                                18 ans et +</p>
-                                        </div>
-
-                                        <div class="flex justify-center space-x-3">
-                                            <div class="w-5 h-5 cursor-pointer rounded border-[1px] border-gray-300 flex items-center justify-center"
-                                                 onclick="subsTrack('Adults',document.getElementById('adultNumber'))">
-                                                <h1 class="text-[#008b8b]">-</h1>
-                                            </div>
-                                            <h1 id="adultNumber">1</h1>
-                                            <div class="w-5 h-5 cursor-pointer rounded border-[1px] border-gray-300 flex items-center justify-center"
-                                                 onclick="addtional('Adults',document.getElementById('adultNumber'))">
-                                                <h1 class="text-[#008b8b]">+</h1>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <div class="flex justify-center space-x-1 items-center">
-                                            <h1 class="" style="font-family: 'Poppins', sans-serif">Etudiants</h1>
-                                            <p class="text-sm text-gray-400" style="font-family: 'Poppins', sans-serif">
-                                                > 18 </p>
-                                        </div>
-
-                                        <div class="flex justify-center space-x-3">
-                                            <div class="w-5 h-5 cursor-pointer rounded border-[1px] border-gray-300 flex items-center justify-center"
-                                                 onclick="subsTrack('Students',document.getElementById('studentNumber'))">
-                                                <h1 class="text-[#008b8b]">-</h1>
-                                            </div>
-                                            <h1 id="studentNumber">0</h1>
-                                            <div class="w-5 h-5 cursor-pointer rounded border-[1px] border-gray-300 flex items-center justify-center"
-                                                 onclick="addtional('Students',document.getElementById('studentNumber'))">
-                                                <h1 class="text-[#008b8b]">+</h1>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="flex relative px-2 justify-between space-x-2 items-center">
-                                <i class="fa-solid fa-tag"></i>
-                                <select class="px-5 py-2 border-none outline-none">
-                                    <option value="Economy">Economy</option>
-                                    <option value="Business-class">Business-class</option>
-                                    <option value="First-class">First-class</option>
-                                </select>
 
-                            </div>
-                        </div>
-
-                        <div class="flex justify-center mr-4 space-x-2 items-center">
-                            <h1 class="text-[#008b8b]" style="font-family: 'Poppins', sans-serif">Looking for Travel
-                                ideas?</h1>
-                            <div class="flex justify-center space-x-2 items-center">
-                                <i class="fa-solid fa-globe"></i>
-                                <h1 class="text-black" style="font-family: 'Poppins', sans-serif">Explore Map</h1>
+                            <div class="flex justify-center mr-4 space-x-2 items-center">
+                                <h1 class="text-[#008b8b]" style="font-family: 'Poppins', sans-serif">Looking for Travel
+                                    ideas?</h1>
+                                <div class="flex justify-center space-x-2 items-center">
+                                    <i class="fa-solid fa-globe"></i>
+                                    <h1 class="text-black" style="font-family: 'Poppins', sans-serif">Explore Map</h1>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="w-full h-fit flex -z-10 justify-center items-center">
-                    <form class="w-full flex space-x-2 z-10" action=""
-                          method="get">
+                    <div class="w-full h-fit flex -z-10 justify-center items-center">
                         <div class="w-11/12 mt-10 rounded flex bg-gray-400 h-20 px-4">
-                            <div class="flex w-2/3 justify-around  h-full items-center">
-                                <%--                                <div class="w-1/2 h-full flex items-center  justify-center border-r-[1px] border-white">--%>
-                                <%--                                  --%>
-                                <%--                                    <input class=" z-10 w-3/4 h-3/4 bg-white rounded pl-4 outline-none ring-2 focus:ring-blue-700 focus:ring-offset-4"--%>
-                                <%--                                           placeholder="depart" style="font-family: 'Poppins', sans-serif" name="depart">--%>
-                                <%--                                </div>--%>
-                                <%--                                <div class="w-1/2 h-full flex items-center justify-center border-l-[1px] border-white">--%>
-                                <%--                                    <input class=" z-10 w-3/4 h-3/4 bg-white rounded pl-4 outline-none ring-2 focus:ring-blue-700 focus:ring-offset-4"--%>
-                                <%--                                           placeholder="return" style="font-family: 'Poppins', sans-serif" name="arrival">--%>
-                                <%--                                </div>--%>
-
-                                <select>
-                                    <c:forEach var="items" items="${airports}">
-                                        <option>
-                                            {items}
+                            <div class="flex w-2/4 space-x-3 justify-around  h-full items-center">
+                                <div class="w-1/2  space-x-3 flex items-center justify-center">
+                                    <h1 style="font-family: 'Poppins', sans-serif" class="text-base text-semibold">
+                                        Depart</h1>
+                                    <select class="w-3/4 px-3 text-base rounded-md py-2 outline-none"
+                                            name="departAirport">
+                                        <%
+                                            for (TableAirport airport : airports) {
+                                        %>
+                                        <option value="<%=airport.getAirport_id()%>"><%=airport.getAirport_name()%>
                                         </option>
-                                    </c:forEach>
-                                </select>
-                            </div>
-                            <div class="w-1/3 flex justify-center items-center space-x-2 pl-4 h-full">
-                                <div class="z-10 w-1/2 flex justify-center items-center h-full rounded">
-                                    <input type="date" class="bg-white w-full h-3/4 rounded pl-3 outline-none"
-                                           name="departDate">
+                                        <% } %>
+                                    </select>
                                 </div>
-                                <div class="z-10 flex justify-center items-center w-1/2 h-full rounded">
-                                    <input type="date" class="bg-white w-full h-3/4 rounded pl-3 outline-none"
-                                           name="arrivalDate">
+                                <div class="w-1/2 space-x-3 flex items-center justify-center">
+                                    <h1 style="font-family: 'Poppins', sans-serif" class="text-base text-semibold">
+                                        Arrival</h1>
+                                    <select class="w-3/4 px-3 text-base rounded-md py-2 outline-none"
+                                            name="ArrivalAirport">
+                                        <%
+                                            for (TableAirport airport : airports) {
+                                        %>
+                                        <option value="<%=airport.getAirport_id()%>"><%=airport.getAirport_name()%>
+                                        </option>
+                                        <% } %>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="w-2/3 flex justify-center items-center space-x-2 pl-4 h-full">
+                                <div class="w-1/2 h-full flex justify-center items-center space-x-2">
+                                    <h1 class="text-base " style="font-family: 'Poppins', sans-serif">Depart time</h1>
+                                    <input type="date" class="px-4 py-2 rounded-md outline-none" name="departDate">
+                                </div>
+                                <div class="w-1/2 h-full flex justify-center items-center space-x-2">
+                                    <h1 class="text-base" style="font-family: 'Poppins', sans-serif">Arrival time</h1>
+                                    <input type="date" class="px-4 py-2 rounded-md outline-none" name="arrivalDate">
                                 </div>
                             </div>
                         </div>
@@ -200,12 +217,11 @@
                                 search
                             </button>
                         </div>
+                    </div>
 
-                    </form>
                 </div>
+            </form>
 
-
-            </div>
         </div>
     </div>
 
